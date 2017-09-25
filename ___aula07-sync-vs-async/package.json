@@ -1,0 +1,15 @@
+{
+  "name": "aula06-sync-vs-async",
+  "version": "1.0.0",
+  "description": "",
+  "main": "App01-request-sync.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.81.0",
+    "sync-request": "^4.0.1"
+  }
+}

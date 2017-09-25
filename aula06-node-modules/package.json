@@ -1,0 +1,14 @@
+{
+  "name": "aula06-node-modules",
+  "version": "1.0.0",
+  "description": "Demo about using common js modules",
+  "main": "app01-using-fs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sync-request": "^4.1.0"
+  }
+}

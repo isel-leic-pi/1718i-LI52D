@@ -1,0 +1,21 @@
+{
+  "name": "aula05-node-intro",
+  "version": "1.0.0",
+  "description": "Intro to node.js",
+  "main": "app01-argv.js",
+  "scripts": {
+    "start": "node app01-argv.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sync-request": "^4.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.6.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
+}
