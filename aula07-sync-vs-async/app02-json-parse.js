@@ -1,9 +1,9 @@
 const req = require('request')
 
 getLeagueLeader(445)
-// sleepFor(2000)
+sleepFor(2000)
 getLeagueLeader(446)
-// sleepFor(2000)
+sleepFor(2000)
 getLeagueLeader(457)
 
 

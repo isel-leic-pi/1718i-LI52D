@@ -22,7 +22,9 @@ static class App
     static void Main()
     {
         GetAsync(445);
+        // Thread.Sleep(500);
         GetAsync(446);
+        // Thread.Sleep(500);
         GetAsync(457);
         
         Console.ReadLine();
@@ -45,7 +47,6 @@ static class App
         WebClient client = new WebClient();
         client.DownloadStringCompleted += GetAsyncCallback;
         client.DownloadStringAsync(new Uri(path));
-        Thread.Sleep(2000);
     }
 
     static void GetAsyncCallback(object sender, DownloadStringCompletedEventArgs args){
