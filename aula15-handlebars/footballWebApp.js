@@ -42,24 +42,12 @@ function actionCallback(resp) {
             data = err.message
             resp.statusCode = 500
         } else {
-            data =  obj instanceof Array 
-                        ? htmlifyArray(obj)
-                        : htmlify(obj)
+            data =  JSON.stringify(obj)
             resp.statusCode = 200
         }
         resp.setHeader('Content-Type', 'text/html')
         resp.end(data)
     }
-}
-
-
-function htmlify(obj) {
-    let str = ''
-    for(let prop in obj) {
-        const val = obj[prop]
-        str += `<li>${prop}: ${val}</li>`
-    }
-    return `<ul>${str}</ul>`
 }
 
 function mapParameters(query,func){
@@ -81,26 +69,4 @@ function mapParameters(query,func){
         actualParams.push(query[param])
     }
     return actualParams
-}
-
-function htmlifyArray(arr) {
-    let strHtml = '<table style="width:100%">'
-    strHtml += tableHeader(arr[0])
-    arr.forEach(element => strHtml += tableRow(element))
-    return strHtml += '</table>'
-}
-
-function tableHeader(element) {
-    let strRow = ''
-    for (let e in element) {
-        strRow += '<th>' + e + '</th>'
-    }
-    return '<tr>' + strRow + '</tr>'
-}
-function tableRow(element) {
-    let strRow= ''
-    for (let e in element) {
-        strRow += '<td>' + element[e] + '</td>'
-    }
-    return '<tr>' + strRow + '</tr>'
 }
