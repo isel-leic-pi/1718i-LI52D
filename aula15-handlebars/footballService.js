@@ -22,7 +22,11 @@ function getLeagueTable(leagueId, cb) {
     req(path, (err, res, data) => {
         if(err) return cb(err)
         const obj = JSON.parse(data.toString())
-        cb(null, obj.standing)
+        obj.standing.forEach(item => {
+            const parts = item._links.team.href.split('/')
+            item.id = parts[parts.length - 1]
+        })
+        cb(null, obj)
     })
 }
 

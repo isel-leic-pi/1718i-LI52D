@@ -15,18 +15,28 @@ server.listen(port)
  * Endpoints paths
  */
 const routes = {
-    'leagues': foot.getLeagues,
-    'leagueTable': foot.getLeagueTable,
-    'team': foot.getTeam
+    'leagues': {
+        action: foot.getLeagues,
+        view: view('./views/leaguesView.hbs')
+    },
+    'leagueTable': {
+        action: foot.getLeagueTable,
+        view: view('./views/leagueTableView.hbs')
+    },
+    'team': {
+        action: foot.getTeam,
+        view: view('./views/teamView.hbs')
+    }
 }
 
 function router(req, resp) {
     const urlObj = url.parse(req.url, true)
     const actionName = urlObj.pathname.substring(1)
-    const action = routes[actionName]
+    const action = routes[actionName].action
     if(action != undefined) {
+        const view = routes[actionName].view
         const parameters = mapParameters(urlObj.query, action)
-        parameters.push(actionCallback(resp, actionName))
+        parameters.push(actionCallback(resp, view))
         action.apply(this, parameters)
     } else {
         resp.statusCode = 404 // Resource Not Found
@@ -38,14 +48,14 @@ function router(req, resp) {
  * 2. Representação: Obter uma String com a representação HTML do recurso.
  * 3. Envio da resposta: statusCode 200 + setHeader() + end()
  */
-function actionCallback(resp, actionName) {
+function actionCallback(resp, view) {
     return (err, obj) => {
         let data
         if(err) {
             data = err.message
             resp.statusCode = 500
         } else {
-            data =  view(obj, './views/' + actionName + 'View.hbs')
+            data =  view(obj)
             resp.statusCode = 200
         }
         resp.setHeader('Content-Type', 'text/html')
@@ -55,15 +65,13 @@ function actionCallback(resp, actionName) {
 
 
 /**
- * Returns an Html view.
+ * Returns template Handlebars.
  * 
- * @param {*} ctx Handlebars context object
  * @param {*} viewPath Path for handlebars template source.
  */
-function view(ctx, viewPath) {
+function view(viewPath) {
     const viewSrc = fs.readFileSync(viewPath).toString()
-    const v = hbs.compile(viewSrc)
-    return v(ctx)
+    return hbs.compile(viewSrc)
 }
 
 function mapParameters(query,func){
