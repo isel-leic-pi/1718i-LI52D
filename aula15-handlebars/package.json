@@ -4,6 +4,7 @@
   "description": "",
   "main": "WebAppServer.js",
   "dependencies": {
+    "handlebars": "^4.0.10",
     "request": "^2.83.0"
   },
   "devDependencies": {},
