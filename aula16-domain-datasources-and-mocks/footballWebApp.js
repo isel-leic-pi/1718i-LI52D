@@ -2,7 +2,7 @@ const http = require('http')
 const url = require('url')
 const fs = require('fs')
 const hbs = require('handlebars')
-const foot = require('./footballService')
+const foot = require('./footballService')()
 const port = 3000
 
 /**
