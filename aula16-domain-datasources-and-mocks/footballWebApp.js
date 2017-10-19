@@ -32,8 +32,8 @@ const routes = {
 function router(req, resp) {
     const urlObj = url.parse(req.url, true)
     const actionName = urlObj.pathname.substring(1)
-    const action = routes[actionName].action
-    if(action != undefined) {
+    if(routes[actionName] != undefined) {
+        const action = routes[actionName].action
         const view = routes[actionName].view
         const parameters = mapParameters(urlObj.query, action)
         parameters.push(actionCallback(resp, view))
