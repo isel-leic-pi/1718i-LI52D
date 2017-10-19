@@ -6,7 +6,19 @@
         <ul>
             <li>Name: {{name}}</li>
             <li>Shortname: {{shortName}}</li>
-            <li><img src='{{crestUrl}}'/></li>
+            <li><img width='100px' src='{{crestUrl}}'/></li>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                </tr>
+                {{#each players}}
+                    <tr>
+                        <td>{{name}}</td>
+                        <td>{{position}}</td>
+                    </tr>
+                {{/each}}
+            </table>
         </ul>
     </body>
 </html>

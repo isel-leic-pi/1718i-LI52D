@@ -34,6 +34,14 @@ function getLeagueTable(leagueId, cb) {
 }
 
 function getTeam(teamId, cb) {
-    const path = 'http://api.football-data.org/v1/teams/' + teamId
-    reqAsJson(path, cb)
+    const pathTeamDetails = 'http://api.football-data.org/v1/teams/' + teamId
+    const pathPlayers = pathTeamDetails + '/players'
+    reqAsJson(pathTeamDetails, (err, team) => {
+        if(err) return cb(err)
+        reqAsJson(pathPlayers, (err, res) =>{
+            if(err) return cb(err)
+            team.players = res.players
+            cb(null, team)
+        })
+    })
 }

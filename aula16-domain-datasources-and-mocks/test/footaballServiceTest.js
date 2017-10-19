@@ -13,6 +13,8 @@ function testGetTeam(test) {
         else {
             test.equal(team.name, 'Tottenham Hotspur FC')
             test.equal(team.code, 'THFC')
+            test.equal(team.players.length, 24)
+            test.equal(team.players[2].name, 'Toby Alderweireld')
         }
         test.done()
     })
