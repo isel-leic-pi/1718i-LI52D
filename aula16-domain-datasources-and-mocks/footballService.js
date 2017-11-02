@@ -5,27 +5,16 @@ const Team = require('./model/Team')
 module.exports = init
 
 function init(dataSource) {
-    let req
-    if(dataSource)
-        req = dataSource
-    else 
-        req = require('request')
+    const req = dataSource
+        ? dataSource
+        : require('request')
         
-    const services = {
+    return {
         getLeagues,
         getLeagueTable,
         getTeam
     }
-    return services
-
-    function reqAsJson(path,cb) {
-        req(path, (err, res, data) => {
-            if(err) return cb(err)
-            const obj = JSON.parse(data.toString())
-            cb(null, obj)
-        })
-    }
-    
+   
     function getLeagues(cb) {
         const path = 'http://api.football-data.org/v1/soccerseasons'
         reqAsJson(path, cb)
@@ -52,6 +41,14 @@ function init(dataSource) {
                 if(err) return cb(err)
                 cb(null, new Team(team, res))
             })
+        })
+    }
+
+    function reqAsJson(path,cb) {
+        req(path, (err, res, data) => {
+            if(err) return cb(err)
+            const obj = JSON.parse(data.toString())
+            cb(null, obj)
         })
     }
 }
