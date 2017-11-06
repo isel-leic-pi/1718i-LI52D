@@ -1,0 +1,18 @@
+{
+    "_links": {
+        "self": {
+            "href": "http://api.football-data.org/v1/teams/73"
+        },
+        "fixtures": {
+            "href": "http://api.football-data.org/v1/teams/73/fixtures"
+        },
+        "players": {
+            "href": "http://api.football-data.org/v1/teams/73/players"
+        }
+    },
+    "name": "Tottenham Hotspur FC",
+    "code": "THFC",
+    "shortName": "Spurs",
+    "squadMarketValue": null,
+    "crestUrl": "http://upload.wikimedia.org/wikipedia/de/b/b4/Tottenham_Hotspur.svg"
+}
