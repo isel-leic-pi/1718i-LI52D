@@ -2,7 +2,9 @@ const http = require('http')
 const url = require('url')
 const fs = require('fs')
 const hbs = require('handlebars')
-const connect = require('../aula22-connect')
+const connect = require('connect')
+const favicon = require('serve-favicon')
+const path = require('path')
 const footRouter = require('./footballRoutes')
 const port = 3000
 
@@ -27,7 +29,14 @@ server.listen(port)
     next()
  })
 
+router.use(favicon(path.join(__dirname, 'public', 'supermario.jpg')))
 router.use(footRouter)
+
+footRouter.use((err, req, resp, next) => {
+    resp.statusCode = 500
+    resp.setHeader('Content-Type', 'text/html')
+    resp.end(err.message)    
+})
 
 footRouter.use((req, resp) => {
     resp.statusCode = 404 // Resource Not Found
