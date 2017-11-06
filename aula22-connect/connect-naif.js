@@ -2,17 +2,32 @@
 
 module.exports = initPipeline
 
+const arr = [] // stores the Middlewares
+
 function initPipeline() {
-    
+
+    let idx = 0
     router.use = addMw
     return router
 
-    function router(req, resp) {
-        // TPC
-        throw new Error('Not implemented!!!!')
+
+    /**
+     * Handler for HTTP requests.
+     */
+    function router(req, res) {
+        var mw = arr[idx]
+        mw(req, res, () => next(req, res, idx) )
     }
+    
+    /**
+     * Adds a mw to the arr array.
+     */
     function addMw(mw) {
-        // TPC
-        throw new Error('Not implemented!!!!')
+        return arr.push(mw)
+    }
+
+    function next(req, res, idx) {
+        var mw = arr[++idx]
+        return mw( req, res, () => next(req,res, idx))
     }
 }
