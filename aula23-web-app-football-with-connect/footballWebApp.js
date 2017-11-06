@@ -19,30 +19,29 @@ server.listen(port)
  router.use((req, resp, next) => {
     const urlObj = url.parse(req.url, true)
     req.query = urlObj.query
+    resp.send = function(viewPath, ctx) {
+        const html = view(viewPath)(ctx)
+        resp.setHeader('Content-Type', 'text/html')
+        resp.end(html)
+    }
     next()
  })
  router.use('/leagues', (req, resp) => {
     foot.getLeagues((err, data) => {
         if(err) return sendError(resp, err.message)
-        const html = view('./views/leaguesView.hbs')(data)
-        resp.setHeader('Content-Type', 'text/html')
-        resp.end(html)
+        resp.send('./views/leaguesView.hbs', data)
     })
 })
 router.use('/leagueTable', (req, resp) => {
     foot.getLeagueTable(req.query.leagueId, (err, data) => {
         if(err) return sendError(resp, err.message)
-        const html = view('./views/leagueTableView.hbs')(data)
-        resp.setHeader('Content-Type', 'text/html')
-        resp.end(html)
+        resp.send('./views/leagueTableView.hbs', data)
     })
 })
 router.use('/team', (req, resp) => {
     foot.getTeam(req.query.teamId, (err, data) => {
         if(err) return sendError(resp, err.message)
-        const html = view('./views/teamView.hbs')(data)
-        resp.setHeader('Content-Type', 'text/html')
-        resp.end(html)
+        resp.send('./views/teamView.hbs', data)
     })
  })
 router.use((req, resp) => {
@@ -55,15 +54,13 @@ function sendError(resp, msg) {
     resp.setHeader('Content-Type', 'text/html')
     resp.end(msg)
 }
-
-
 /**
  * Returns template Handlebars.
  * 
  * @param {*} viewPath Path for handlebars template source.
  */
 function view(viewPath) {
-    if(!view.paths) view.paths = {}
+    if(!view.paths) view.paths = {} // Init paths cache
     if(view.paths[viewPath]) return view.paths[viewPath]
     const viewSrc = fs.readFileSync(viewPath).toString()
     const template = hbs.compile(viewSrc)
