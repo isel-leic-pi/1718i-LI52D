@@ -1,24 +1,24 @@
 const express = require('express')
-const router = express() // Init empty pipeline
+const router = express.Router()
 const foot = require('./footballService')()
 
 module.exports = router
 
-router.use('/leagues', (req, resp, next) => {
+router.get('/leagues', (req, resp, next) => {
     foot.getLeagues((err, data) => {
         if(err) return next(err)
-        resp.send('./views/leaguesView.hbs', data)
+        resp.render('leaguesView', data)
     })
 })
-router.use('/leagueTable', (req, resp, next) => {
+router.get('/leagueTable', (req, resp, next) => {
     foot.getLeagueTable(req.query.leagueId, (err, data) => {
         if(err) return next(err)
-        resp.send('./views/leagueTableView.hbs', data)
+        resp.render('leagueTableView', data)
     })
 })
-router.use('/team', (req, resp, next) => {
+router.get('/team', (req, resp, next) => {
     foot.getTeam(req.query.teamId, (err, data) => {
         if(err) return next(err)
-        resp.send('./views/teamView.hbs', data)
+        resp.render('teamView', data)
     })
  })
