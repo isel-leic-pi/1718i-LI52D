@@ -1,0 +1,27 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>Position</th>
+                <th>Name</th>
+                <th>Points</th>
+            </tr>
+            {{#each standing}}
+                <tr>
+                    <td>{{position}}</td>
+                    <td>
+                        <a href='team?teamId={{id}}'>
+                            {{teamName}}
+                        </a>
+                    </td>
+                    <td>
+                        {{points}}
+                    </td>
+                </tr>
+            {{/each}}
+        </table>
+    </body>
+</html>
