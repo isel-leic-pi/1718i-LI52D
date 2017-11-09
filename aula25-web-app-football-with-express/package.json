@@ -1,0 +1,20 @@
+{
+  "name": "aula13-web-app-football-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "WebAppServer.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "connect": "^3.6.5",
+    "handlebars": "^4.0.10",
+    "path": "^0.12.7",
+    "request": "^2.83.0",
+    "serve-favicon": "^2.4.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "nodeunit"
+  },
+  "author": "",
+  "license": "ISC"
+}
