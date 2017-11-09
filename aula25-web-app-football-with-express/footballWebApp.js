@@ -2,7 +2,7 @@ const http = require('http')
 const url = require('url')
 const fs = require('fs')
 const hbs = require('handlebars')
-const connect = require('connect')
+const express = require('express')
 const favicon = require('serve-favicon')
 const path = require('path')
 const footRouter = require('./footballRoutes')
@@ -11,7 +11,7 @@ const port = 3000
 /**
  * Init HTTP server
  */
-const router = connect() // Init an empty pipeline of Middlewares
+const router = express() // Init an empty pipeline of Middlewares
 const server = http.createServer(router)
 server.listen(port)
 

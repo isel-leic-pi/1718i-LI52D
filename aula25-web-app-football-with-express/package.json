@@ -5,7 +5,7 @@
   "main": "WebAppServer.js",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "connect": "^3.6.5",
+    "express": "^4.16.2",
     "handlebars": "^4.0.10",
     "path": "^0.12.7",
     "request": "^2.83.0",

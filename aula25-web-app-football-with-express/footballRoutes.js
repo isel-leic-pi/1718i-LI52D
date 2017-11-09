@@ -1,5 +1,5 @@
-const connect = require('connect')
-const router = connect()
+const express = require('express')
+const router = express() // Init empty pipeline
 const foot = require('./footballService')()
 
 module.exports = router
