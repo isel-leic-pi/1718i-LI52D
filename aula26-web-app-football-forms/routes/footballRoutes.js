@@ -10,14 +10,15 @@ router.get('/leagues', (req, resp, next) => {
         resp.render('leaguesView', data)
     })
 })
-router.get('/leagueTable', (req, resp, next) => {
-    foot.getLeagueTable(req.query.leagueId, (err, data) => {
+router.get('/leagues/:id/table', (req, resp, next) => {
+    foot.getLeagueTable(req.params.id, (err, data) => {
         if(err) return next(err)
+        data.leagueId = req.params.id
         resp.render('leagueTableView', data)
     })
 })
-router.get('/team', (req, resp, next) => {
-    foot.getTeam(req.query.teamId, (err, data) => {
+router.get('/leagues/:id/table/:teamId', (req, resp, next) => {
+    foot.getTeam(req.params.teamId, (err, data) => {
         if(err) return next(err)
         resp.render('teamView', data)
     })
