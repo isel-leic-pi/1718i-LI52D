@@ -1,23 +1,16 @@
-<html>
-    <head>
-
-    </head>
-    <body>
-        <table>
-            <tr>
-                <th>Year</th>
-                <th>Caption</th>
-            </tr>
-            {{#each .}}
-                <tr>
-                    <td>{{year}}</td>
-                    <td>
-                        <a href='leagueTable?leagueId={{id}}'>
-                            {{caption}}
-                        </a>
-                    </td>
-                </tr>
-            {{/each}}
-        </table>
-    </body>
-</html>
+<table class="table">
+    <tr>
+        <th>Year</th>
+        <th>Caption</th>
+    </tr>
+    {{#each .}}
+        <tr>
+            <td>{{year}}</td>
+            <td>
+                <a href='leagueTable?leagueId={{id}}'>
+                    {{caption}}
+                </a>
+            </td>
+        </tr>
+    {{/each}}
+</table>
