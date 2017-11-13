@@ -1,0 +1,12 @@
+<h5>Favourites</h5>
+<table class="table card">
+    {{#each favourites}}
+        <tr>
+            <td>
+                <a href="/leagues/{{leagueId}}/table">
+                    {{caption}}
+                </a>
+            </td>
+        </tr>
+    {{/each}}
+</table>

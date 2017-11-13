@@ -1,0 +1,30 @@
+
+<div class="row">
+    <div class="panel col-xs-3">
+        {{> favourites}}
+    </div>
+    <div class="col-xs-9">
+        <table class="table">
+            <tr>
+                <th>Year</th>
+                <th>Caption</th>
+                <th>Add to...</th>
+            </tr>
+            {{#each .}}
+                <tr>
+                    <td>{{year}}</td>
+                    <td>
+                        <a href='leagues/{{id}}/table'>
+                            {{caption}}
+                        </a>
+                    </td>
+                    <td>
+                        <form method="POST" action="/favourites?league={{id}}&caption={{caption}}">
+                            <input type="submit" value="Fav">
+                        </form>
+                    </td>
+                </tr>
+            {{/each}}
+        </table>
+    </div>
+</div>
