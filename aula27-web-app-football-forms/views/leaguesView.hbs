@@ -19,8 +19,10 @@
                         </a>
                     </td>
                     <td>
-                        <form method="POST" action="/favourites?league={{id}}&caption={{caption}}">
+                        <form method="POST" action="/favourites">
                             <input type="submit" value="Fav">
+                            <input type="hidden" name="league" value="{{id}}">
+                            <input type="hidden" name="caption" value="{{caption}}">
                         </form>
                     </td>
                 </tr>

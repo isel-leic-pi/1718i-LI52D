@@ -21,8 +21,8 @@ router.use((req, res, next) => {
 
 router.post('/favourites', (req, res, next) => {
     favourites.push({
-        leagueId: req.query.league,
-        caption: req.query.caption
+        leagueId: req.body.league,
+        caption: req.body.caption
     })
     res.redirect('/leagues')
 })

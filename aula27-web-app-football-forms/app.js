@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const hbs = require('hbs')
+const bodyParser = require('body-parser')
 
 const favRouter = require('./routes/favouritesRoutes');
 const footRouter = require('./routes/footballRoutes');
@@ -14,6 +15,7 @@ app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials')
 
 // uncomment after placing your favicon in /public
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(favicon(path.join(__dirname, 'public', 'supermario.jpg')));
 app.use(express.static(path.join(__dirname, 'public')));
 
