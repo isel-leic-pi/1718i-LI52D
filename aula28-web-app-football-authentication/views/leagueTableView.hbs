@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="panel col-xs-3">
+        {{> favourites}}
+    </div>
+    <div class="col-xs-9">
+        <table class="table">
+            <tr>
+                <th>Position</th>
+                <th>Name</th>
+                <th>Points</th>
+            </tr>
+            {{#each standing}}
+                <tr>
+                    <td>{{position}}</td>
+                    <td>
+                        <a href='/leagues/{{../leagueId}}/table/{{id}}'>
+                            {{teamName}}
+                        </a>
+                    </td>
+                    <td>
+                        {{points}}
+                    </td>
+                </tr>
+            {{/each}}
+        </table>
+    </div>
+</div>
