@@ -15,12 +15,13 @@ const favourites = [
 ]
 
 router.use((req, res, next) => {
-    res.locals.favourites = favourites
+    // res.locals.favourites = favourites
     next()
 })
 
 router.post('/favourites', (req, res, next) => {
-    favourites.push({
+    if(!req.user) return res.redirect('/login')
+    req.user.leagues.push({
         leagueId: req.body.league,
         caption: req.body.caption
     })
