@@ -22,7 +22,7 @@ router.use((req, res, next) => {
 router.post('/favourites', (req, res, next) => {
     if(!req.user) return res.redirect('/login')
     req.user.leagues.push({
-        leagueId: req.body.league,
+        id: req.body.league,
         caption: req.body.caption
     })
     res.redirect('/leagues')
