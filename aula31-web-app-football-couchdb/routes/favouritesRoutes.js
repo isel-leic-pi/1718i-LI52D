@@ -1,6 +1,6 @@
+const userService = require('./userService')
 const express = require('express')
 const router = express.Router()
-
 module.exports = router
 
 const favourites = [
@@ -25,5 +25,8 @@ router.post('/favourites', (req, res, next) => {
         id: req.body.league,
         caption: req.body.caption
     })
-    res.redirect('/leagues')
+    userService.save(req.user, (err) => {
+        if(err) return next(err)
+        res.redirect('/leagues')
+    })
 })
