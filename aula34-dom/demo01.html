@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Futebol</title>
+    <script>
+      function addFavourite() {
+        const tr = document.createElement('tr')
+        const txt = document.createTextNode('Ligue 1')
+        tr.appendChild(txt)
+        const favs = document.getElementById('tableFavourites')
+        favs.appendChild(tr)
+      }
+    </script>
+  </head>
+  <body>
+    <table id='tableFavourites'>
+      <tr><th>Ligas Favoritas</th></tr>
+      <tr><td>Premier League</td></tr>
+      <tr><td>Liga Sagres</td></tr>
+    </table>
+    <button onclick='addFavourite()'>Add Favourite</button>
+  </body>
+</html>
