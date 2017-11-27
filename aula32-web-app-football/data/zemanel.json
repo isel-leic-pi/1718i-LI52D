@@ -1,0 +1,19 @@
+{
+    "username": "zemanel",
+    "password": "123",
+    "fullname": "Manel Maria",
+    "leagues": [
+        {
+            "id": "431",
+            "caption": "2. Bundesliga 2016/17",
+            "league": "BL2",
+            "year": "2016"
+        },
+        {
+            "id": "430",
+            "caption": "1. Bundesliga 2016/17",
+            "league": "BL1",
+            "year": "2016"
+        }
+    ]
+}
