@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
+const flash = require('connect-flash')
 
 const favRouter = require('./routes/favouritesRoutes');
 const footRouter = require('./routes/footballRoutes');
@@ -24,6 +25,7 @@ app.use(favicon(path.join(__dirname, 'public', 'supermario.jpg')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser())
 app.use(session({secret: 'keyboard cat', resave: false, saveUninitialized: true }))
+app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session()) // Obtem da sessão user id -> deserialize(id) -> user -> req.user
 

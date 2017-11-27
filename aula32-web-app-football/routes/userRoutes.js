@@ -5,14 +5,25 @@ const passport = require('passport')
 
 module.exports = router
 
+/**
+ * => Resposta a um pedido da página de /login
+ * => Insucesso na validação das credenciais => retorna /login
+ */
 router.get('/login', (req, res) => {
-    res.render('login', {layout: false})
+    const ctx = { layout: false }
+    const msg = req.flash('loginError')
+    if(msg)  ctx.loginError = {message: msg}
+    res.render('login', ctx)
 })
 
 router.post('/login', (req, res, next) => {
     userService.authenticate(req.body.username, req.body.password, (err, user, info) => {
         if(err) return next(err)
-        if(info) return next(new Error(info))
+        if(info) {
+            // gravar mensagem de erro
+            req.flash('loginError', info)
+            return res.redirect('/login')
+        }
         req.logIn(user, (err) => {
             if(err) return next(err)
             res.redirect('/leagues')

@@ -7,12 +7,9 @@
   <body>
     <div class="col-md-4"></div>
     <div class="col-md-4 panel well">
-        {{#if @messages.error}}
-        <div class="alert alert-warning alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            {{@messages.error}}
+        {{#if loginError.message}}
+        <div class="alert alert-warning" role="alert">
+            <strong>Warning! {{loginError.message}}</strong> 
         </div>
         {{/if}}
         <form action="/login" method="post">
