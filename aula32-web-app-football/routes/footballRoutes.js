@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const foot = require('./footballService')()
+const foot = require('./../services/footballService')()
 
 module.exports = router
 

@@ -1,4 +1,4 @@
-const userService = require('./userService')
+const userService = require('./../services/userService')
 const express = require('express')
 const router = express.Router()
 module.exports = router
