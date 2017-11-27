@@ -3,13 +3,23 @@
   <head>
     <title>Futebol</title>
     <script>
-      function addFavourite() {
-        const tr = document.createElement('tr')
-        const txt = document.createTextNode('Ligue 1')
-        tr.appendChild(txt)
-        const favs = document.getElementById('tableFavourites')
-        favs.appendChild(tr)
+      const footballFrontend = {
+        favs: null,
+        txtFavLeague: null,
+
+        onload: function() {
+          favs = document.getElementById('tableFavourites')
+          txtFavLeague =  document.getElementById('txtFavLeague')
+        },
+
+        addFavourite: function () {
+            const tr = document.createElement('tr')
+            const txt = document.createTextNode(txtFavLeague.value)
+            tr.appendChild(txt)
+            favs.appendChild(tr)
+        },
       }
+      window.onload = footballFrontend.onload
     </script>
   </head>
   <body>
@@ -18,6 +28,7 @@
       <tr><td>Premier League</td></tr>
       <tr><td>Liga Sagres</td></tr>
     </table>
-    <button onclick='addFavourite()'>Add Favourite</button>
+    <button onclick='footballFrontend.addFavourite()'>Add Favourite</button>
+    <input id="txtFavLeague" type="text">
   </body>
 </html>
