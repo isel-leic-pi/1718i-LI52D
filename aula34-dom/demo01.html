@@ -13,10 +13,13 @@
         },
 
         addFavourite: function () {
+            /*
             const tr = document.createElement('tr')
             const txt = document.createTextNode(txtFavLeague.value)
             tr.appendChild(txt)
             favs.appendChild(tr)
+            */
+            favs.innerHTML += '<tr>' + txtFavLeague.value + '</tr>'
         },
       }
       window.onload = footballFrontend.onload
