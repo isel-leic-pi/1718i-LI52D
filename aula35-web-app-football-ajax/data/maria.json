@@ -1,0 +1,19 @@
+{
+    "username": "maria",
+    "password": "123",
+    "fullname": "Maria Jacinta",
+    "leagues": [
+        {
+            "id": "426",
+            "caption": "Premier League 2016/17",
+            "league": "PL",
+            "year": "2016"
+        },
+        {
+            "id": "434",
+            "caption": "Ligue 1 2016/17",
+            "league": "FL1",
+            "year": "2016"
+        }
+    ]
+}
