@@ -19,11 +19,11 @@
                         </a>
                     </td>
                     <td>
-                        <form method="POST" action="/favourites">
-                            <input type="submit" value="Fav">
-                            <input type="hidden" name="league" value="{{id}}">
-                            <input type="hidden" name="caption" value="{{caption}}">
-                        </form>
+                        <div class='divAddFav'>
+                            <input type="submit" value="Fav" class='btn'>
+                            <input type="hidden" name="league" value="{{id}}" class='txtLeague'>
+                            <input type="hidden" name="caption" value="{{caption}}" class='txtCaption'>
+                        </div>
                     </td>
                 </tr>
             {{/each}}

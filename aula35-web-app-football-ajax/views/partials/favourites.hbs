@@ -5,12 +5,6 @@
 <h5>Favourites</h5>
 <table class="table card">
     {{#each favourites}}
-        <tr>
-            <td>
-                <a href="/leagues/{{id}}/table">
-                    {{caption}}
-                </a>
-            </td>
-        </tr>
+        {{> favouriteLeague}}
     {{/each}}
 </table>
