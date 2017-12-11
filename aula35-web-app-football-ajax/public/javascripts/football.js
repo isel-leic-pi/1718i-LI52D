@@ -3,6 +3,8 @@ window.onload = function() {
         
     }
 
+    const tableFavourites = document.getElementById('tableFavourites')
+
     document
         .querySelectorAll('.divAddFav')
         .forEach(div => {
@@ -11,9 +13,9 @@ window.onload = function() {
             const txtCaption = div.querySelector('.txtCaption')
             btn.addEventListener('click', () => {
                 const data =  `league=${txtLeague.value}&caption=${txtCaption.value}`
-                httpRequest('POST', '/favourites', data, (err) => {
+                httpRequest('POST', '/favourites', data, (err, body) => {
                     if (err) return alert(err)
-                    alert('Favourite Added!')
+                    tableFavourites.innerHTML += body
                 })
             })
         })
@@ -28,7 +30,7 @@ window.onload = function() {
         xhr.onreadystatechange = function() {//Call a function when the state changes.
             if(xhr.readyState == XMLHttpRequest.DONE) {
                 if(xhr.status == 200)
-                    cb()
+                    cb(null, xhr.responseText)
                 else 
                     cb(new Error(xhr.status + ': ' + xhr.responseText))
             }
